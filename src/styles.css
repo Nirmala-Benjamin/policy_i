@@ -1,1 +1,102 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Container for the form */
+  mat-form-field {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  /* Style for the header */
+  h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-top: 30px;
+    color: #333;
+  }
+  
+  /* Make sure buttons look consistent */
+  button {
+    width: 100px;
+    margin: 20px auto;
+    display: block;
+  }
+  
+  /* Adding padding and background to the form */
+  form {
+    background-color: #fff;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    max-width: 600px;
+    margin: 20px auto;
+  }
+  
+  /* Styling the form input fields */
+  mat-input-element {
+    padding: 12px;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  /* Style for mat-select dropdown */
+  mat-select {
+    padding: 12px;
+    border-radius: 4px;
+  }
+  
+  /* Add spacing between form fields */
+  mat-form-field {
+    margin-bottom: 15px;
+  }
+  
+  /* Centering the "Next" and "Previous" buttons */
+  button {
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #1976d2;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #1565c0;
+  }
+  
+  button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  /* Responsiveness for smaller screens */
+  @media (max-width: 600px) {
+    form {
+      padding: 20px;
+    }
+  
+    h2 {
+      font-size: 20px;
+    }
+  
+    button {
+      width: 100%;
+    }
+  }
+  mat-form-field {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  

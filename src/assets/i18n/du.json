@@ -1,0 +1,13 @@
+{
+    "TITLE": "Verzekeringsaanvraag",
+    "FIRST_NAME": "voornaam",
+    "LAST_NAME": "achternaam",
+    "EMAIL": "e-mail",
+    "BIRTH_DATE": "geboortedatum",
+    "NEXT": "volgende",
+    "PREVIOUS": "vorig",
+    "SUBMIT": "indienen",
+    "LANGUAGE":"taal",    
+    "PSD":"Begindatum van het beleid"
+  }
+  

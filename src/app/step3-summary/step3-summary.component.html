@@ -1,0 +1,15 @@
+<div>
+    <h3>Summary</h3>
+    <p><strong>First Name:</strong> {{ personalInfo.firstName }}</p>
+    <p><strong>Last Name:</strong> {{ personalInfo.lastName }}</p>
+    <p><strong>Email:</strong> {{ personalInfo.email }}</p>
+    <p><strong>Birth Date:</strong> {{ personalInfo.birthDate }}</p>
+    <p><strong>Language:</strong> {{ personalInfo.language }}</p>
+    
+    <p><strong>Policy Start Date:</strong> {{ policyInfo.policyStartDate }}</p>
+    <p><strong>Insurance Product:</strong> {{ policyInfo.insuranceProduct }}</p>
+  
+    <button (click)="editPersonalInfo()">Edit Personal Info</button>
+    <button (click)="next()">Next</button>
+  </div>
+  

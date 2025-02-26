@@ -1,0 +1,12 @@
+{
+    "TITLE": "Insurance Application",
+    "FIRST_NAME": "First Name",
+    "LAST_NAME": "Last Name",
+    "EMAIL": "Email",
+    "BIRTH_DATE": "Birth Date",
+    "NEXT": "Next",
+    "PREVIOUS": "Previous",
+    "SUBMIT": "Submit",
+    "LANGUAGE":"Language",
+    "PSD":"Policy Start Date"
+  }

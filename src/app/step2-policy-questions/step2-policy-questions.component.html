@@ -1,0 +1,31 @@
+<form [formGroup]="policyQuestionsForm" (ngSubmit)="next()">
+    <!-- Policy Start Date -->
+    <mat-form-field appearance="fill">
+      <mat-label>{{ 'PSD' | translate }}</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="policyStartDate" />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="policyQuestionsForm.get('policyStartDate')?.invalid && policyQuestionsForm.get('policyStartDate')?.touched">
+        <span *ngIf="policyQuestionsForm.get('policyStartDate')?.hasError('required')">Policy start date is required.</span>
+        <span *ngIf="policyQuestionsForm.get('policyStartDate')?.hasError('futureDate')">Policy start date must be in the future.</span>
+        <span *ngIf="policyQuestionsForm.get('policyStartDate')?.hasError('firstOfMonth')">Policy start date must be the first of the month.</span>
+        <span *ngIf="policyQuestionsForm.get('policyStartDate')?.hasError('maxDate')">Policy start date cannot be more than 3 months ahead.</span>
+      </mat-error>
+    </mat-form-field>
+  
+    <!-- Insurance Product Dropdown -->
+    <mat-form-field appearance="fill">
+      <mat-label>Select Insurance Product</mat-label>
+      <mat-select formControlName="insuranceProduct">
+        <mat-option *ngFor="let product of insuranceProducts" [value]="product">{{ product }}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="policyQuestionsForm.get('insuranceProduct')?.invalid && policyQuestionsForm.get('insuranceProduct')?.touched">
+        <span *ngIf="policyQuestionsForm.get('insuranceProduct')?.hasError('required')">Insurance product is required.</span>
+      </mat-error>
+    </mat-form-field>
+  
+    <!-- Navigation Buttons -->
+    <button mat-raised-button color="primary" type="submit" [disabled]="policyQuestionsForm.invalid">Next</button>
+    <button mat-raised-button color="accent" type="button" (click)="previous()">Previous</button>
+  </form>
+      
