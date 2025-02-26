@@ -1,15 +1,46 @@
-<div>
-    <h3>Summary</h3>
-    <p><strong>First Name:</strong> {{ personalInfo.firstName }}</p>
-    <p><strong>Last Name:</strong> {{ personalInfo.lastName }}</p>
-    <p><strong>Email:</strong> {{ personalInfo.email }}</p>
-    <p><strong>Birth Date:</strong> {{ personalInfo.birthDate }}</p>
-    <p><strong>Language:</strong> {{ personalInfo.language }}</p>
-    
-    <p><strong>Policy Start Date:</strong> {{ policyInfo.policyStartDate }}</p>
-    <p><strong>Insurance Product:</strong> {{ policyInfo.insuranceProduct }}</p>
-  
-    <button (click)="editPersonalInfo()">Edit Personal Info</button>
-    <button (click)="next()">Next</button>
-  </div>
-  
+<div class="summary-container">
+  <h3>Summary</h3>
+
+  <form>
+    <mat-form-field appearance="outline">
+      <mat-label>First Name</mat-label>
+      <input matInput [value]="personalInfo.firstName" readonly>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Last Name</mat-label>
+      <input matInput [value]="personalInfo.lastName" readonly>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput [value]="personalInfo.email" readonly>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Birth Date</mat-label>
+      <input matInput [value]="personalInfo.birthDate" readonly>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Language</mat-label>
+      <input matInput [value]="personalInfo.language" readonly>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Policy Start Date</mat-label>
+      <input matInput [value]="policyInfo.policyStartDate" readonly>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Insurance Product</mat-label>
+      <input matInput [value]="policyInfo.insuranceProduct" readonly>
+    </mat-form-field>
+
+    <div class="button-group">
+      <button mat-raised-button color="primary" (click)="editPersonalInfo()">Edit Info</button>
+      <button mat-raised-button color="accent" (click)="prev()">Prev</button>
+      <button mat-raised-button color="warn" (click)="next()">Next</button>
+    </div>
+  </form>
+</div>
