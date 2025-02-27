@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { FormDataService } from '../form-data.service';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
+
 
 @Component({
   selector: 'app-step3-summary',
@@ -19,7 +21,8 @@ export class Step3SummaryComponent {
     private formDataService: FormDataService,
     private router: Router,
     private fb: FormBuilder,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private translate: TranslateService 
   ) {
     this.personalInfo = this.formDataService.getPersonalInfo();
     this.policyInfo = this.formDataService.getPolicyInfo();
@@ -54,6 +57,8 @@ export class Step3SummaryComponent {
         insuranceProduct: updatedData.insuranceProduct
       };
 
+      // Update the selected language in TranslateService
+    this.translate.use(updatedData.language);
       // Update stored data
       this.formDataService.setPersonalInfo(this.personalInfo);
       this.formDataService.setPolicyInfo(this.policyInfo);

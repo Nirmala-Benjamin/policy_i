@@ -1,24 +1,30 @@
+<div class="clsHeading">{{ 'POLICY_INFORMATION' | translate }}</div>
+<div class="clsPolicyQuestions">
+  
 <form [formGroup]="policyQuestionsForm" (ngSubmit)="next()">
   <!-- Policy Start Date -->
-  <label for="policyStartDate">{{ 'PSD' | translate }}</label>
-  <input type="date" id="policyStartDate" formControlName="policyStartDate" />
-  <div *ngIf="policyQuestionsForm.get('policyStartDate')?.invalid && policyQuestionsForm.get('policyStartDate')?.touched">
-      <span *ngIf="policyQuestionsForm.get('policyStartDate')?.hasError('required')">Policy start date is required.</span>
-      <span *ngIf="policyQuestionsForm.get('policyStartDate')?.hasError('futureDate')">Policy start date must be in the future.</span>
-      <span *ngIf="policyQuestionsForm.get('policyStartDate')?.hasError('firstOfMonth')">Policy start date must be the first of the month.</span>
-      <span *ngIf="policyQuestionsForm.get('policyStartDate')?.hasError('maxDate')">Policy start date cannot be more than 3 months ahead.</span>
-  </div>
-
+  <div class="clsWrap">
+    <label for="policyStartDate">{{ 'PSD' | translate }}</label>
+    <input type="date" id="policyStartDate" formControlName="policyStartDate" />    
+    <div *ngIf="policyQuestionsForm.get('policyStartDate')?.invalid && policyQuestionsForm.get('policyStartDate')?.touched" class="error">  
+      <span *ngIf="policyQuestionsForm.get('policyStartDate')?.hasError('required')">{{ 'ERRORS.POLICY_START_REQUIRED' | translate }}</span>    
+      <span *ngIf="policyQuestionsForm.get('policyStartDate')?.hasError('futureDate')">{{ 'ERRORS.POLICY_START_FUTURE' | translate }}</span>    
+      <span *ngIf="policyQuestionsForm.get('policyStartDate')?.hasError('firstOfMonth')">{{ 'ERRORS.POLICY_START_FIRST' | translate }}</span>    
+      <span *ngIf="policyQuestionsForm.get('policyStartDate')?.hasError('maxDate')">{{ 'ERRORS.POLICY_START_MAX' | translate }}</span>    
+    </div>
+</div>
   <!-- Insurance Product Dropdown -->
-  <label for="insuranceProduct">Select Insurance Product</label>
-  <select id="insuranceProduct" formControlName="insuranceProduct">
+  <div class="clsWrap">
+    <label for="insuranceProduct">{{ 'INSURANCE_PRODUCT' | translate }}</label>
+    <select id="insuranceProduct" formControlName="insuranceProduct">
       <option *ngFor="let product of insuranceProducts" [value]="product">{{ product }}</option>
-  </select>
-  <div *ngIf="policyQuestionsForm.get('insuranceProduct')?.invalid && policyQuestionsForm.get('insuranceProduct')?.touched">
-      <span *ngIf="policyQuestionsForm.get('insuranceProduct')?.hasError('required')">Insurance product is required.</span>
-  </div>
-
+    </select>
+    <div  class="error" *ngIf="policyQuestionsForm.get('insuranceProduct')?.invalid && policyQuestionsForm.get('insuranceProduct')?.touched">
+      <span *ngIf="policyQuestionsForm.get('insuranceProduct')?.hasError('required')">{{ 'ERRORS.INSURANCE_PRODUCT_REQUIRED' | translate }}</span>
+    </div>
+</div>
   <!-- Navigation Buttons -->
   <button type="submit" [disabled]="policyQuestionsForm.invalid">Next</button>
   <button type="button" (click)="previous()">Previous</button>
 </form>
+</div>

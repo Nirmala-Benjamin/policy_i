@@ -23,6 +23,7 @@ export class Step4SubmissionComponent {
     console.log(this.formDataService.getPersonalInfo());
     console.log(this.formDataService.getPolicyInfo());
     this.formDataService.clearFormData();
+    localStorage.removeItem('language');
 
     // Redirect to a thank you page
     alert('Thank you for your submission!');

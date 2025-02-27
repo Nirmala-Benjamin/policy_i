@@ -1,7 +1,6 @@
-<div>
-    <h3>Confirm Submission</h3>
-    <p>Are you sure you want to submit the form?</p>
-    <button (click)="submit()">Submit</button>
-    <button (click)="router.navigate(['/step3'])">Previous</button>
-  </div>
-  
+<div class="clsHeading">{{ 'CONFIRM_SUBMISSION' | translate }}</div>
+<div class="clsSubmission">
+    <p>{{ 'CONFIRM_MESSAGE' | translate }}</p>
+    <button (click)="submit()">{{ 'SUBMIT' | translate }}</button>
+    <button (click)="router.navigate(['/step3'])">{{ 'PREVIOUS' | translate }}</button>
+</div>

@@ -1,72 +1,105 @@
 <div class="summary-container">
-  <h3>Summary</h3>
-  
-  <form>
-    <label for="firstName"><strong>First Name:</strong></label>
-    <input type="text" id="firstName" name="firstName" [value]="personalInfo.firstName" readonly />
-  
-    <label for="lastName"><strong>Last Name:</strong></label>
-    <input type="text" id="lastName" name="lastName" [value]="personalInfo.lastName" readonly />
-  
-    <label for="email"><strong>Email:</strong></label>
-    <input type="email" id="email" name="email" [value]="personalInfo.email" readonly />
-  
-    <label for="birthDate"><strong>Birth Date:</strong></label>
-    <input type="text" id="birthDate" name="birthDate" [value]="personalInfo.birthDate" readonly />
-  
-    <label for="language"><strong>Language:</strong></label>
-    <input type="text" id="language" name="language" [value]="personalInfo.language" readonly />
-  
-    <h3>Policy Information</h3>
-    <label for="policyStartDate"><strong>Policy Start Date:</strong></label>
-    <input type="text" id="policyStartDate" name="policyStartDate" [value]="policyInfo.policyStartDate" readonly />
-  
-    <label for="insuranceProduct"><strong>Insurance Product:</strong></label>
-    <input type="text" id="insuranceProduct" name="insuranceProduct" [value]="policyInfo.insuranceProduct" readonly />
-  
+  <div class="clsHeading">{{ 'SUMMARY' | translate }}</div>
 
-  <button mat-button color="primary" (click)="openEditModal(editDialog); $event.preventDefault();">Edit Info</button>
-  <button mat-button color="accent" (click)="previous()">Previous</button>
-  <button mat-button color="warn" (click)="next()">Next</button>
+  <form>
+    <div class="clsEdit">
+      <label><strong>{{ 'PERSONAL_INFORMATION' | translate }}</strong></label><button  (click)="openEditModal(editDialog); $event.preventDefault();">
+        <span class="material-icons">edit</span></button>
+    </div>
+    
+    <div class="clsWrap">
+      <label for="firstName"><strong>{{ 'FIRST_NAME' | translate }}:</strong></label>
+      <input type="text" id="firstName" name="firstName" [value]="personalInfo.firstName" readonly />
+    </div>
+
+    <div class="clsWrap">
+      <label for="lastName"><strong>{{ 'LAST_NAME' | translate }}:</strong></label>
+      <input type="text" id="lastName" name="lastName" [value]="personalInfo.lastName" readonly />
+    </div>
+
+    <div class="clsWrap">
+      <label for="email"><strong>{{ 'EMAIL' | translate }}:</strong></label>
+      <input type="email" id="email" name="email" [value]="personalInfo.email" readonly />
+    </div>
+
+    <div class="clsWrap">
+      <label for="birthDate"><strong>{{ 'BIRTH_DATE' | translate }}:</strong></label>
+      <input type="text" id="birthDate" name="birthDate" [value]="personalInfo.birthDate" readonly />
+    </div>
+
+    <div class="clsWrap">
+      <label for="language"><strong>{{ 'LANGUAGE' | translate }}:</strong></label>
+      <input type="text" id="language" name="language" [value]="personalInfo.language" readonly />
+    </div>
+    <div class="clsEdit">
+      <label><strong>{{ 'POLICY_INFORMATION' | translate }}</strong></label><button  (click)="openEditModal(editDialog); $event.preventDefault();">
+        <span class="material-icons">edit</span></button>
+    </div>
+    <div class="clsWrap">
+      <label for="policyStartDate"><strong>{{ 'PSD' | translate }}:</strong></label>
+      <input type="text" id="policyStartDate" name="policyStartDate" [value]="policyInfo.policyStartDate" readonly />
+    </div>
+
+    <div class="clsWrap">
+      <label for="insuranceProduct"><strong>{{ 'INSURANCE_PRODUCT' | translate }}:</strong></label>
+      <input type="text" id="insuranceProduct" name="insuranceProduct" [value]="policyInfo.insuranceProduct" readonly />
+    </div>
+
+    
+    <button mat-button color="accent" (click)="previous()">{{ 'PREVIOUS' | translate }}</button>
+    <button mat-button color="warn" (click)="next()">{{ 'NEXT' | translate }}</button>
   </form>
 
-<!-- Modal Template -->
-<ng-template #editDialog>
-  <div class="modal">
-    
-    <h2>Edit Information</h2>
-    
-    <form [formGroup]="editForm">
-      <label>First Name</label>
-      <input type="text" formControlName="firstName">
-      
-      <label>Last Name</label>
-      <input type="text" formControlName="lastName">
-      
-      <label>Email</label>
-      <input type="email" formControlName="email">
-      
-      <label>Birth Date</label>
-      <input type="date" formControlName="birthDate">
-      
-      <label>Language</label>
-      <select formControlName="language">
-        <option value="English">English</option>
-        <option value="Dutch">Dutch</option>
-      </select>
+  <!-- Modal Template -->
+  <ng-template #editDialog>
+    <div class="modal">
+      <h2>{{ 'EDIT_INFORMATION' | translate }}</h2>
 
-      <hr>
+      <form [formGroup]="editForm" class="clsModal">
+        <div class="clsWrap">
+          <label>{{ 'FIRST_NAME' | translate }}</label>
+          <input type="text" formControlName="firstName">
+        </div>
 
-      <label>Policy Start Date</label>
-      <input type="date" formControlName="policyStartDate">
+        <div class="clsWrap">
+          <label>{{ 'LAST_NAME' | translate }}</label>
+          <input type="text" formControlName="lastName">
+        </div>
 
-      <label>Insurance Product</label>
-      <select formControlName="insuranceProduct">
-        <option *ngFor="let product of insuranceProducts" [value]="product">{{ product }}</option>
-      </select>
-      
-      <button mat-button color="primary" (click)="saveChanges()" [disabled]="editForm.invalid">Save</button>
-      <button mat-button color="warn" (click)="dialog.closeAll()">Cancel</button>
-    </form>
-  </div>
-</ng-template>
+        <div class="clsWrap">
+          <label>{{ 'EMAIL' | translate }}</label>
+          <input type="email" formControlName="email">
+        </div>
+
+        <div class="clsWrap">
+          <label>{{ 'BIRTH_DATE' | translate }}</label>
+          <input type="date" formControlName="birthDate">
+        </div>
+
+        <div class="clsWrap">
+          <label>{{ 'LANGUAGE' | translate }}</label>
+          <select formControlName="language">
+            <option value="English">English</option>
+            <option value="Dutch">Dutch</option>
+          </select>
+        </div>
+
+        <div class="clsWrap">
+          <label>{{ 'PSD' | translate }}</label>
+          <input type="date" formControlName="policyStartDate">
+        </div>
+
+        <div class="clsWrap">
+          <label>{{ 'INSURANCE_PRODUCT' | translate }}</label>
+          <select formControlName="insuranceProduct">
+            <option *ngFor="let product of insuranceProducts" [value]="product">{{ product }}</option>
+          </select>
+        </div>
+
+        <button mat-button color="primary" (click)="saveChanges()" [disabled]="editForm.invalid">{{ 'SAVE' | translate }}</button>
+        <button mat-button color="warn" (click)="dialog.closeAll()">{{ 'CANCEL' | translate }}</button>
+
+      </form>
+    </div>
+  </ng-template>
+</div>
