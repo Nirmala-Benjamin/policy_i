@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormDataService } from '../form-data.service';
+import { FormDataService } from '../../services/form-data.service';
 import { TranslateService } from '@ngx-translate/core';
 
 
@@ -11,11 +11,10 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class Step4SubmissionComponent {
 
-  // Change the access modifier to 'public' or 'readonly' to allow usage outside of the class
   constructor(public router: Router,    
     private formDataService: FormDataService,
     private translate: TranslateService
-  ) {}  // or readonly router: Router
+  ) {}  
 
   submit() {
     // Mock submit to API
