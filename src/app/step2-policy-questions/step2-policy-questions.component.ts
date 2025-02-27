@@ -30,8 +30,10 @@ export class Step2PolicyQuestionsComponent implements OnInit {
       const savedData = this.formDataService.getPolicyInfo();
     
       this.policyQuestionsForm = this.fb.group({
-        policyStartDate: [savedData?.policyStartDate || '', 
-          [Validators.required, this.futureDateValidator(), this.firstOfMonthValidator(), this.maxDateValidator()]],
+        policyStartDate: [
+          savedData?.policyStartDate ? new Date(savedData.policyStartDate) : '',
+          [Validators.required, this.futureDateValidator(), this.firstOfMonthValidator(), this.maxDateValidator()],
+        ],
         insuranceProduct: [savedData?.insuranceProduct || '', Validators.required]
       });
     
@@ -45,51 +47,44 @@ export class Step2PolicyQuestionsComponent implements OnInit {
       this.translate.use(localStorage.getItem('language') || 'en');
     }
     
-  
   // Custom validator to check if the policy start date is in the future
-  futureDateValidator(): ValidatorFn {
-    return (control: AbstractControl): ValidationErrors | null => {
-      const date = control.value;
-      if (date && date < new Date()) {
-        return { futureDate: true };
-      }
-      return null;
-    };
-  }
+futureDateValidator(): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    const date = new Date(control.value); // Convert string to Date
+    if (isNaN(date.getTime())) return { invalidDate: true }; // Check if it's a valid date
+    if (date < new Date()) return { futureDate: true };
+    return null;
+  };
+}
 
-  // Custom validator to ensure the policy start date is the first of the month
-  firstOfMonthValidator(): ValidatorFn {
-    return (control: AbstractControl): ValidationErrors | null => {
-      const date = control.value;
-      if (date && date.getDate() !== 1) {
-        return { firstOfMonth: true };
-      }
-      return null;
-    };
-  }
+// Custom validator to ensure the policy start date is the first of the month
+firstOfMonthValidator(): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    const date = new Date(control.value); // Convert string to Date
+    if (isNaN(date.getTime())) return { invalidDate: true };
+    if (date.getDate() !== 1) return { firstOfMonth: true };
+    return null;
+  };
+}
 
-  // Custom validator to limit the policy start date to be within 3 months ahead
-  maxDateValidator(): ValidatorFn {
-    return (control: AbstractControl): ValidationErrors | null => {
-      const date = control.value;
-      const maxDate = new Date();
-      maxDate.setMonth(maxDate.getMonth() + 3);  // Set the max date to 3 months ahead
-      if (date && date > maxDate) {
-        return { maxDate: true };
-      }
-      return null;
-    };
-  }
+// Custom validator to limit the policy start date to be within 3 months ahead
+maxDateValidator(): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    const date = new Date(control.value); // Convert string to Date
+    if (isNaN(date.getTime())) return { invalidDate: true };
+
+    const maxDate = new Date();
+    maxDate.setMonth(maxDate.getMonth() + 3); // Set max date to 3 months ahead
+    if (date > maxDate) return { maxDate: true };
+
+    return null;
+  };
+}
+
 
   next() {
     if (this.policyQuestionsForm.valid) {
-      // Handle the next step logic (e.g., navigation)
-      //console.log('Form Submitted:', this.policyQuestionsForm.value);
-      //localStorage.setItem('policyInfo', JSON.stringify(this.policyQuestionsForm.value));
-      //this.router.navigate(['/step3']);
-// Submit the form data to the mock API
- // Store policy information in the service
-
+      
  this.formDataService.setPolicyInfo(this.policyQuestionsForm.value);
 this.mockApiService.submitRequest(this.policyQuestionsForm.value).subscribe(response => {
   if (response.success) {

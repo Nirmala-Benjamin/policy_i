@@ -69,12 +69,15 @@ export class Step1PersonalInfoComponent {
     });
   }
   
-  switchLanguage(lang: string) {
+  switchLanguage(event: Event) {
+    const target = event.target as HTMLSelectElement; // Type assertion
+    const lang = target.value; // Extract the selected value
+  
     this.translate.use(lang);
-
     localStorage.setItem('language', lang);
     this.personalInfoForm.patchValue({ language: lang }); // Update form value
   }
+  
   next() {
     if (this.personalInfoForm.valid) {
      // localStorage.setItem('personalInfo', JSON.stringify(this.personalInfoForm.value));

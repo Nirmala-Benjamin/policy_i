@@ -1,56 +1,43 @@
 <div class="clsHeading">Personal Information</div>
 
 <form [formGroup]="personalInfoForm" (ngSubmit)="next()">
-    <mat-form-field appearance="fill">
-      <mat-label>{{ 'FIRST_NAME' | translate }} </mat-label>
-      <input matInput id="firstName" formControlName="firstName" />
-      <mat-error *ngIf="personalInfoForm.get('firstName')?.invalid && personalInfoForm.get('firstName')?.touched">
+    <label for="firstName">{{ 'FIRST_NAME' | translate }}</label>
+    <input type="text" id="firstName" formControlName="firstName" />
+    <div class="error" *ngIf="personalInfoForm.get('firstName')?.invalid && personalInfoForm.get('firstName')?.touched">
         <span *ngIf="personalInfoForm.get('firstName')?.hasError('required')">First name is required.</span>
         <span *ngIf="personalInfoForm.get('firstName')?.hasError('maxlength')">Max length is 255 characters.</span>
-      </mat-error>
-    </mat-form-field>
-  
-    <mat-form-field appearance="fill">
-      <mat-label>{{ 'LAST_NAME' | translate }} </mat-label>
-      <input matInput id="lastName" formControlName="lastName" />
-      <mat-error *ngIf="personalInfoForm.get('lastName')?.invalid && personalInfoForm.get('lastName')?.touched">
+    </div>
+
+    <label for="lastName">{{ 'LAST_NAME' | translate }}</label>
+    <input type="text" id="lastName" formControlName="lastName" />
+    <div class="error" *ngIf="personalInfoForm.get('lastName')?.invalid && personalInfoForm.get('lastName')?.touched">
         <span *ngIf="personalInfoForm.get('lastName')?.hasError('required')">Last name is required.</span>
         <span *ngIf="personalInfoForm.get('lastName')?.hasError('maxlength')">Max length is 255 characters.</span>
-      </mat-error>
-    </mat-form-field>
-  
-    <mat-form-field appearance="fill">
-      <mat-label>{{ 'EMAIL' | translate }} </mat-label>
-      <input matInput id="email" type="email" formControlName="email" />
-      <mat-error *ngIf="personalInfoForm.get('email')?.invalid && personalInfoForm.get('email')?.touched">
+    </div>
+
+    <label for="email">{{ 'EMAIL' | translate }}</label>
+    <input type="email" id="email" formControlName="email" />
+    <div class="error" *ngIf="personalInfoForm.get('email')?.invalid && personalInfoForm.get('email')?.touched">
         <span *ngIf="personalInfoForm.get('email')?.hasError('required')">Email is required.</span>
         <span *ngIf="personalInfoForm.get('email')?.hasError('email')">Please enter a valid email.</span>
         <span *ngIf="personalInfoForm.get('email')?.hasError('maxlength')">Max length is 255 characters.</span>
-      </mat-error>
-    </mat-form-field>
-  
-    <mat-form-field appearance="fill">
-      <mat-label>{{ 'BIRTH_DATE' | translate }} </mat-label>
-      <input matInput [matDatepicker]="picker" id="birthDate" formControlName="birthDate" />
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-      <mat-error *ngIf="personalInfoForm.get('birthDate')?.invalid && personalInfoForm.get('birthDate')?.touched">
+    </div>
+
+    <label for="birthDate">{{ 'BIRTH_DATE' | translate }}</label>
+    <input type="date" id="birthDate" formControlName="birthDate" />
+    <div class="error" *ngIf="personalInfoForm.get('birthDate')?.invalid && personalInfoForm.get('birthDate')?.touched">
         <span *ngIf="personalInfoForm.get('birthDate')?.hasError('required')">Birth date is required.</span>
         <span *ngIf="personalInfoForm.get('birthDate')?.hasError('minAge')">You must be at least 18 years old.</span>
-      </mat-error>
-    </mat-form-field>
-  
-    <mat-form-field appearance="fill">
-      <mat-label>{{ 'LANGUAGE' | translate }} </mat-label>
-      <mat-select formControlName="language" (selectionChange)="switchLanguage($event.value)">
-        <mat-option value="en">English</mat-option>
-        <mat-option value="du">Dutch</mat-option>
-      </mat-select>
-      <mat-error *ngIf="personalInfoForm.get('language')?.invalid && personalInfoForm.get('language')?.touched">
+    </div>
+
+    <label for="language">{{ 'LANGUAGE' | translate }}</label>
+    <select id="language" formControlName="language" (change)="switchLanguage($event)">
+      <option  value="en">English</option>
+        <option value="du">Dutch</option>
+    </select>
+    <div class="error" *ngIf="personalInfoForm.get('language')?.invalid && personalInfoForm.get('language')?.touched">
         <span *ngIf="personalInfoForm.get('language')?.hasError('required')">Language is required.</span>
-      </mat-error>
-    </mat-form-field>
-  
-    <button mat-raised-button color="primary" type="submit" [disabled]="personalInfoForm.invalid">{{ 'NEXT' | translate }}</button>
-  </form>
-  
+    </div>
+
+    <button type="submit" [disabled]="personalInfoForm.invalid">{{ 'NEXT' | translate }}</button>
+</form>

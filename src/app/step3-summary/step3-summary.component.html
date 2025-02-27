@@ -1,46 +1,72 @@
 <div class="summary-container">
   <h3>Summary</h3>
-
+  
   <form>
-    <mat-form-field appearance="outline">
-      <mat-label>First Name</mat-label>
-      <input matInput [value]="personalInfo.firstName" readonly>
-    </mat-form-field>
+    <label for="firstName"><strong>First Name:</strong></label>
+    <input type="text" id="firstName" name="firstName" [value]="personalInfo.firstName" readonly />
+  
+    <label for="lastName"><strong>Last Name:</strong></label>
+    <input type="text" id="lastName" name="lastName" [value]="personalInfo.lastName" readonly />
+  
+    <label for="email"><strong>Email:</strong></label>
+    <input type="email" id="email" name="email" [value]="personalInfo.email" readonly />
+  
+    <label for="birthDate"><strong>Birth Date:</strong></label>
+    <input type="text" id="birthDate" name="birthDate" [value]="personalInfo.birthDate" readonly />
+  
+    <label for="language"><strong>Language:</strong></label>
+    <input type="text" id="language" name="language" [value]="personalInfo.language" readonly />
+  
+    <h3>Policy Information</h3>
+    <label for="policyStartDate"><strong>Policy Start Date:</strong></label>
+    <input type="text" id="policyStartDate" name="policyStartDate" [value]="policyInfo.policyStartDate" readonly />
+  
+    <label for="insuranceProduct"><strong>Insurance Product:</strong></label>
+    <input type="text" id="insuranceProduct" name="insuranceProduct" [value]="policyInfo.insuranceProduct" readonly />
+  
 
-    <mat-form-field appearance="outline">
-      <mat-label>Last Name</mat-label>
-      <input matInput [value]="personalInfo.lastName" readonly>
-    </mat-form-field>
-
-    <mat-form-field appearance="outline">
-      <mat-label>Email</mat-label>
-      <input matInput [value]="personalInfo.email" readonly>
-    </mat-form-field>
-
-    <mat-form-field appearance="outline">
-      <mat-label>Birth Date</mat-label>
-      <input matInput [value]="personalInfo.birthDate" readonly>
-    </mat-form-field>
-
-    <mat-form-field appearance="outline">
-      <mat-label>Language</mat-label>
-      <input matInput [value]="personalInfo.language" readonly>
-    </mat-form-field>
-
-    <mat-form-field appearance="outline">
-      <mat-label>Policy Start Date</mat-label>
-      <input matInput [value]="policyInfo.policyStartDate" readonly>
-    </mat-form-field>
-
-    <mat-form-field appearance="outline">
-      <mat-label>Insurance Product</mat-label>
-      <input matInput [value]="policyInfo.insuranceProduct" readonly>
-    </mat-form-field>
-
-    <div class="button-group">
-      <button mat-raised-button color="primary" (click)="editPersonalInfo()">Edit Info</button>
-      <button mat-raised-button color="accent" (click)="prev()">Prev</button>
-      <button mat-raised-button color="warn" (click)="next()">Next</button>
-    </div>
+  <button mat-button color="primary" (click)="openEditModal(editDialog); $event.preventDefault();">Edit Info</button>
+  <button mat-button color="accent" (click)="previous()">Previous</button>
+  <button mat-button color="warn" (click)="next()">Next</button>
   </form>
-</div>
+
+<!-- Modal Template -->
+<ng-template #editDialog>
+  <div class="modal">
+    
+    <h2>Edit Information</h2>
+    
+    <form [formGroup]="editForm">
+      <label>First Name</label>
+      <input type="text" formControlName="firstName">
+      
+      <label>Last Name</label>
+      <input type="text" formControlName="lastName">
+      
+      <label>Email</label>
+      <input type="email" formControlName="email">
+      
+      <label>Birth Date</label>
+      <input type="date" formControlName="birthDate">
+      
+      <label>Language</label>
+      <select formControlName="language">
+        <option value="English">English</option>
+        <option value="Dutch">Dutch</option>
+      </select>
+
+      <hr>
+
+      <label>Policy Start Date</label>
+      <input type="date" formControlName="policyStartDate">
+
+      <label>Insurance Product</label>
+      <select formControlName="insuranceProduct">
+        <option *ngFor="let product of insuranceProducts" [value]="product">{{ product }}</option>
+      </select>
+      
+      <button mat-button color="primary" (click)="saveChanges()" [disabled]="editForm.invalid">Save</button>
+      <button mat-button color="warn" (click)="dialog.closeAll()">Cancel</button>
+    </form>
+  </div>
+</ng-template>
