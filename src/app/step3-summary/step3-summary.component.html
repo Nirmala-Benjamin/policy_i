@@ -45,9 +45,11 @@
       <input type="text" id="insuranceProduct" name="insuranceProduct" [value]="policyInfo.insuranceProduct" readonly />
     </div>
 
-    
-    <button mat-button color="accent" (click)="previous()">{{ 'PREVIOUS' | translate }}</button>
-    <button mat-button color="warn" (click)="next()">{{ 'NEXT' | translate }}</button>
+    <div class="clsWrap">
+      
+    <button mat-button color="accent" class="clsPrev" (click)="previous()">{{ 'PREVIOUS' | translate }}</button>
+    <button mat-button color="warn"  class="clsNxt" (click)="next()">{{ 'NEXT' | translate }}</button>
+    </div>
   </form>
 
   <!-- Modal Template -->
@@ -95,10 +97,10 @@
             <option *ngFor="let product of insuranceProducts" [value]="product">{{ product }}</option>
           </select>
         </div>
-
-        <button mat-button color="primary" (click)="saveChanges()" [disabled]="editForm.invalid">{{ 'SAVE' | translate }}</button>
-        <button mat-button color="warn" (click)="dialog.closeAll()">{{ 'CANCEL' | translate }}</button>
-
+        <div class="clsWrap">
+        <button mat-button color="primary" class="clsPrev" (click)="saveChanges()" [disabled]="editForm.invalid">{{ 'SAVE' | translate }}</button>
+        <button mat-button color="warn" class="clsNxt" (click)="dialog.closeAll()">{{ 'CANCEL' | translate }}</button>
+        </div>
       </form>
     </div>
   </ng-template>

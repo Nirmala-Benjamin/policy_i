@@ -23,8 +23,10 @@
       <span *ngIf="policyQuestionsForm.get('insuranceProduct')?.hasError('required')">{{ 'ERRORS.INSURANCE_PRODUCT_REQUIRED' | translate }}</span>
     </div>
 </div>
+<div class="clsWrap">
   <!-- Navigation Buttons -->
-  <button type="submit" [disabled]="policyQuestionsForm.invalid">Next</button>
-  <button type="button" (click)="previous()">Previous</button>
+  <button type="button"  class="clsPrev" (click)="previous()">Previous</button>  
+  <button type="submit"  class="clsNxt" [disabled]="policyQuestionsForm.invalid">Next</button>
+</div>
 </form>
 </div>

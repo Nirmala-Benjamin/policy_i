@@ -106,7 +106,12 @@ button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
 }
-
+.clsWrap .clsPrev{
+  float: left;
+}
+.clsWrap .clsNxt{
+  float: right;
+}
 /* Responsive Design */
 @media (max-width: 600px) {
   form {
