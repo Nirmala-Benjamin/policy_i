@@ -1,43 +1,48 @@
-<div class="clsHeading">Personal Information</div>
+<div class="clsHeading">{{ 'PERSONAL_INFORMATION' | translate }}</div>
 
 <form [formGroup]="personalInfoForm" (ngSubmit)="next()">
+  <div class="clsWrap">
     <label for="firstName">{{ 'FIRST_NAME' | translate }}</label>
     <input type="text" id="firstName" formControlName="firstName" />
     <div class="error" *ngIf="personalInfoForm.get('firstName')?.invalid && personalInfoForm.get('firstName')?.touched">
-        <span *ngIf="personalInfoForm.get('firstName')?.hasError('required')">First name is required.</span>
-        <span *ngIf="personalInfoForm.get('firstName')?.hasError('maxlength')">Max length is 255 characters.</span>
+        <span *ngIf="personalInfoForm.get('firstName')?.hasError('required')">{{ 'ERRORS.FIRST_NAME_REQUIRED' | translate }}</span>
+        <span *ngIf="personalInfoForm.get('firstName')?.hasError('maxlength')">{{ 'ERRORS.FIRST_NAME_MAX' | translate }}</span>
     </div>
-
+  </div>
+  <div class="clsWrap">
     <label for="lastName">{{ 'LAST_NAME' | translate }}</label>
     <input type="text" id="lastName" formControlName="lastName" />
     <div class="error" *ngIf="personalInfoForm.get('lastName')?.invalid && personalInfoForm.get('lastName')?.touched">
-        <span *ngIf="personalInfoForm.get('lastName')?.hasError('required')">Last name is required.</span>
-        <span *ngIf="personalInfoForm.get('lastName')?.hasError('maxlength')">Max length is 255 characters.</span>
+        <span *ngIf="personalInfoForm.get('lastName')?.hasError('required')">{{ 'ERRORS.LAST_NAME_REQUIRED' | translate }}</span>
+        <span *ngIf="personalInfoForm.get('lastName')?.hasError('maxlength')">{{ 'ERRORS.LAST_NAME_MAX' | translate }}</span>
     </div>
-
+  </div>
+  <div class="clsWrap">
     <label for="email">{{ 'EMAIL' | translate }}</label>
     <input type="email" id="email" formControlName="email" />
     <div class="error" *ngIf="personalInfoForm.get('email')?.invalid && personalInfoForm.get('email')?.touched">
-        <span *ngIf="personalInfoForm.get('email')?.hasError('required')">Email is required.</span>
-        <span *ngIf="personalInfoForm.get('email')?.hasError('email')">Please enter a valid email.</span>
-        <span *ngIf="personalInfoForm.get('email')?.hasError('maxlength')">Max length is 255 characters.</span>
+        <span *ngIf="personalInfoForm.get('email')?.hasError('required')">{{ 'ERRORS.EMAIL_REQUIRED' | translate }}</span>
+        <span *ngIf="personalInfoForm.get('email')?.hasError('email')">{{ 'ERRORS.EMAIL_INVALID' | translate }}</span>
+        <span *ngIf="personalInfoForm.get('email')?.hasError('maxlength')">{{ 'ERRORS.EMAIL_MAX' | translate }}</span>
     </div>
-
+</div>
+<div class="clsWrap">
     <label for="birthDate">{{ 'BIRTH_DATE' | translate }}</label>
     <input type="date" id="birthDate" formControlName="birthDate" />
     <div class="error" *ngIf="personalInfoForm.get('birthDate')?.invalid && personalInfoForm.get('birthDate')?.touched">
-        <span *ngIf="personalInfoForm.get('birthDate')?.hasError('required')">Birth date is required.</span>
-        <span *ngIf="personalInfoForm.get('birthDate')?.hasError('minAge')">You must be at least 18 years old.</span>
+        <span *ngIf="personalInfoForm.get('birthDate')?.hasError('required')">{{ 'ERRORS.BIRTH_DATE_REQUIRED' | translate }}</span>
+        <span *ngIf="personalInfoForm.get('birthDate')?.hasError('minAge')">{{ 'ERRORS.BIRTH_DATE_MIN_AGE' | translate }}</span>
     </div>
-
+</div>
+<div class="clsWrap">
     <label for="language">{{ 'LANGUAGE' | translate }}</label>
     <select id="language" formControlName="language" (change)="switchLanguage($event)">
-      <option  value="en">English</option>
-        <option value="du">Dutch</option>
+      <option value="English">English</option>
+      <option value="Dutch">Dutch</option>
     </select>
     <div class="error" *ngIf="personalInfoForm.get('language')?.invalid && personalInfoForm.get('language')?.touched">
-        <span *ngIf="personalInfoForm.get('language')?.hasError('required')">Language is required.</span>
+        <span *ngIf="personalInfoForm.get('language')?.hasError('required')">{{ 'ERRORS.LANGUAGE_REQUIRED' | translate }}</span>
     </div>
-
-    <button type="submit" [disabled]="personalInfoForm.invalid">{{ 'NEXT' | translate }}</button>
+</div>
+<button type="submit" [disabled]="personalInfoForm.invalid">{{ 'NEXT' | translate }}</button>
 </form>

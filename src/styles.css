@@ -1,140 +1,137 @@
-/* You can add global styles to this file, and also import other style files */
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-/* General styles */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-    margin: 0;
-    padding: 0;
-  }
-  
-  /* Container for the form */
-  mat-form-field {
-    width: 100%;
-    margin-bottom: 20px;
-  }
-  
-  /* Style for the header */
-  h2 {
-    text-align: center;
-    font-size: 24px;
-    margin-top: 30px;
-    color: #333;
-  }
-  
-  /* Make sure buttons look consistent */
-  button {
-    width: 100px;
-    margin: 20px auto;
-    display: block;
-  }
-  
-  /* Adding padding and background to the form */
-  form {
-    background-color: #fff;
-    padding: 30px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    max-width: 600px;
-    margin: 20px auto;
-  }
-  
-  /* Styling the form input fields */
-  mat-input-element {
-    padding: 12px;
-    border-radius: 4px;
-    font-size: 16px;
-  }
-  
-  /* Style for mat-select dropdown */
-  mat-select {
-    padding: 12px;
-    border-radius: 4px;
-  }
-  
-  /* Add spacing between form fields */
-  mat-form-field {
-    margin-bottom: 15px;
-  }
-  
-  /* Centering the "Next" and "Previous" buttons */
-  button {
-    font-size: 16px;
-    font-weight: bold;
-    color: #fff;
-    background-color: #1976d2;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  button:hover {
-    background-color: #1565c0;
-  }
-  
-  button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-  }
-  
-  /* Responsiveness for smaller screens */
-  @media (max-width: 600px) {
-    form {
-      padding: 20px;
-    }
-  
-    h2 {
-      font-size: 20px;
-    }
-  
-    button {
-      width: 100%;
-    }
-  }
-  mat-form-field {
-    width: 100%;
-    margin-bottom: 20px;
-  }
-  .clsHeading {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 10px;
+/* Global Styles */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: #f9f9f9;
 }
 
+/* Form Container */
+form, .clsSubmission {
+  background-color: #fff;
+  padding: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  max-width: 600px;
+  margin: 20px auto;
+}
+.clsSubmission {
+  text-align: center;
+}
+/* Headings */
+h2, .clsHeading {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+  padding: 30px;
+}
+
+/* Flexbox for Form Fields */
+.form-group {
+  
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  
+ 
+}
+.clsWrap{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-bottom: 30px;
+  position: relative;
+}
+.clsWrap .error{
+  position: absolute;
+  bottom: -20px;
+  right: 0;
+}
 label {
-    display: block;
-    font-weight: bold;
-    margin-top: 10px;
+  font-weight: bold;
+  flex: 30%;
+  text-align: left; /* Align labels to the right */
 }
 
 input, select {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+  flex: 70%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
-
+select{
+  flex: 73%;
+}
+/* Error Messages */
 .error {
-    color: red;
-    font-size: 12px;
-    margin-top: 5px;
+  color: red;
+  font-size: 10px;
+  margin-top: 5px;
 }
 
+/* Buttons */
 button {
-    margin-top: 15px;
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+  width: 100px;
+  margin: 20px auto;
+  display: block;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: #1976d2;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.clsEdit {
+  margin-bottom: 20px;
+}
+.clsEdit button{
+  margin: 0;
+  padding: 0;
+  width: auto;
+}
+.clsEdit label{
+  float: left;
+  padding-right: 20px;
+}
+button:hover {
+  background-color: #1565c0;
 }
 
 button:disabled {
-    background-color: #ccc;
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  form {
+      padding: 20px;
+  }
+
+  h2 {
+      font-size: 20px;
+  }
+
+  .form-group {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+
+  label {
+      width: 100%;
+      text-align: left;
+  }
+
+  input, select {
+      width: 100%;
+  }
+
+  button {
+      width: 100%;
+  }
 }

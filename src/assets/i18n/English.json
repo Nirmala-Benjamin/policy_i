@@ -1,0 +1,40 @@
+{
+  "PERSONAL_INFORMATION": "Personal Information",
+  "FIRST_NAME": "First Name",
+  "LAST_NAME": "Last Name",
+  "EMAIL": "Email",
+  "BIRTH_DATE": "Birth Date",
+  "LANGUAGE": "Language",
+  "POLICY_INFORMATION": "Policy Information",
+  "PSD": "Policy Start Date",
+  "INSURANCE_PRODUCT": "Select Insurance Product",
+  "NEXT": "Next",
+  "PREVIOUS": "Previous",
+  "EDIT_INFO": "Edit Info",
+  "SAVE": "Save",
+  "CANCEL": "Cancel",
+  "EDIT_INFORMATION": "Edit Information",
+  "CONFIRM_SUBMISSION": "Confirm Submission",
+  "CONFIRM_MESSAGE": "Are you sure you want to submit the form?",
+  "SUBMIT": "Submit",
+  "ERRORS": {
+    "FIRST_NAME_REQUIRED": "First name is required.",
+    "FIRST_NAME_MAX": "Max length is 255 characters.",
+    "LAST_NAME_REQUIRED": "Last name is required.",
+    "LAST_NAME_MAX": "Max length is 255 characters.",
+    "EMAIL_REQUIRED": "Email is required.",
+    "EMAIL_INVALID": "Please enter a valid email.",
+    "EMAIL_MAX": "Max length is 255 characters.",
+    "BIRTH_DATE_REQUIRED": "Birth date is required.",
+    "BIRTH_DATE_MIN_AGE": "You must be at least 18 years old.",
+    "LANGUAGE_REQUIRED": "Language is required.",
+    "POLICY_START_REQUIRED": "Policy start date is required.",
+      "POLICY_START_FUTURE": "Policy start date must be in the future.",
+      "POLICY_START_FIRST": "Policy start date must be the first of the month.",
+      "POLICY_START_MAX": "Policy start date cannot be more than 3 months ahead.",
+      "INSURANCE_PRODUCT_REQUIRED": "Insurance product is required."
+  }
+
+ 
+  
+}

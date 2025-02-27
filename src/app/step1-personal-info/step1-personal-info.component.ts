@@ -50,8 +50,8 @@ export class Step1PersonalInfoComponent {
     private formDataService: FormDataService,
     private translate: TranslateService
   ) {
-    this.translate.setDefaultLang('en');
-    this.translate.use(localStorage.getItem('language') || 'en');
+    this.translate.setDefaultLang('English');
+    this.translate.use(localStorage.getItem('language') || 'English');
   
     // Retrieve stored personal info
     const savedData = this.formDataService.getPersonalInfo();
@@ -76,6 +76,7 @@ export class Step1PersonalInfoComponent {
     this.translate.use(lang);
     localStorage.setItem('language', lang);
     this.personalInfoForm.patchValue({ language: lang }); // Update form value
+  //  this.personalInfoForm.reset({ language: lang });
   }
   
   next() {

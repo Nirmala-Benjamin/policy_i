@@ -43,8 +43,8 @@ export class Step2PolicyQuestionsComponent implements OnInit {
       });
     
       // Set translation language
-      this.translate.setDefaultLang('en');
-      this.translate.use(localStorage.getItem('language') || 'en');
+      this.translate.setDefaultLang('English');
+      this.translate.use(localStorage.getItem('language') || 'English');
     }
     
   // Custom validator to check if the policy start date is in the future
