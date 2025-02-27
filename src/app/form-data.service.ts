@@ -28,4 +28,9 @@ export class FormDataService {
   getPolicyInfo() {
     return this.policyInfo;
   }
+  clearFormData() {
+    this.personalInfo = null;
+    this.policyInfo = null;
+  }
+  
 }

@@ -43,27 +43,41 @@ function ageValidator(control: any) {
 export class Step1PersonalInfoComponent {
   personalInfoForm: FormGroup;
   languages = ['English', 'Dutch'];  
-  constructor(private fb: FormBuilder, private router: Router, private formDataService: FormDataService,private translate: TranslateService) {
+
+  constructor(
+    private fb: FormBuilder, 
+    private router: Router, 
+    private formDataService: FormDataService,
+    private translate: TranslateService
+  ) {
     this.translate.setDefaultLang('en');
     this.translate.use(localStorage.getItem('language') || 'en');
+  
+    // Retrieve stored personal info
+    const savedData = this.formDataService.getPersonalInfo();
+  
     this.personalInfoForm = this.fb.group({
-      firstName: ['', [Validators.required, Validators.maxLength(255)]],
-      lastName: ['', [Validators.required, Validators.maxLength(255)]],
-      email: ['', [
+      firstName: [savedData?.firstName || '', [Validators.required, Validators.maxLength(255)]],
+      lastName: [savedData?.lastName || '', [Validators.required, Validators.maxLength(255)]],
+      email: [savedData?.email || '', [
         Validators.required,
         Validators.maxLength(255),
         Validators.email
       ]],
-      birthDate: ['', [Validators.required, ageValidator]],
-      language: ['English', [Validators.required]],
+      birthDate: [savedData?.birthDate || '', [Validators.required, ageValidator]],
+      language: [savedData?.language || 'English', [Validators.required]],
     });
   }
-  switchLanguage(lang: string) {
+  
+  switchLanguage(event: Event) {
+    const target = event.target as HTMLSelectElement; // Type assertion
+    const lang = target.value; // Extract the selected value
+  
     this.translate.use(lang);
-
     localStorage.setItem('language', lang);
     this.personalInfoForm.patchValue({ language: lang }); // Update form value
   }
+  
   next() {
     if (this.personalInfoForm.valid) {
      // localStorage.setItem('personalInfo', JSON.stringify(this.personalInfoForm.value));
