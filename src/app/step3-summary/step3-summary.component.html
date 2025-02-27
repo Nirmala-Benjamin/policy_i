@@ -64,7 +64,7 @@
           <input type="text" formControlName="firstName">
           <!-- Error message for first name -->
           <div *ngIf="editForm.get('firstName')?.invalid && editForm.get('firstName')?.touched" class="error">
-            <span *ngIf="editForm.get('firstName')?.hasError('required')">{{ 'FIRST_NAME_REQUIRED' | translate }}</span>
+            <span *ngIf="editForm.get('firstName')?.hasError('required')">{{ 'ERRORS.FIRST_NAME_REQUIRED' | translate }}</span>
           </div>
         </div>
   
@@ -74,7 +74,7 @@
           <input type="text" formControlName="lastName">
           <!-- Error message for last name -->
           <div *ngIf="editForm.get('lastName')?.invalid && editForm.get('lastName')?.touched" class="error">
-            <span *ngIf="editForm.get('lastName')?.hasError('required')">{{ 'LAST_NAME_REQUIRED' | translate }}</span>
+            <span *ngIf="editForm.get('lastName')?.hasError('required')">{{ 'ERRORS.LAST_NAME_REQUIRED' | translate }}</span>
           </div>
         </div>
   
@@ -84,8 +84,8 @@
           <input type="email" formControlName="email">
           <!-- Error message for email -->
           <div *ngIf="editForm.get('email')?.invalid && editForm.get('email')?.touched" class="error">
-            <span *ngIf="editForm.get('email')?.hasError('required')">{{ 'EMAIL_REQUIRED' | translate }}</span>
-            <span *ngIf="editForm.get('email')?.hasError('email')">{{ 'EMAIL_INVALID' | translate }}</span>
+            <span *ngIf="editForm.get('email')?.hasError('required')">{{ 'ERRORS.EMAIL_REQUIRED' | translate }}</span>
+            <span *ngIf="editForm.get('email')?.hasError('email')">{{ 'ERRORS.EMAIL_INVALID' | translate }}</span>
           </div>
         </div>
   
@@ -94,8 +94,8 @@
         <label>{{ 'BIRTH_DATE' | translate }}</label>
         <input type="date" formControlName="birthDate">
         <div *ngIf="editForm.get('birthDate')?.invalid && editForm.get('birthDate')?.touched" class="error">
-          <span *ngIf="editForm.get('birthDate')?.hasError('required')">{{ 'BIRTH_DATE_REQUIRED' | translate }}</span>
-          <span *ngIf="editForm.get('birthDate')?.hasError('minAge')">{{ 'AGE_MIN_18' | translate }}</span> <!-- Error for age below 18 -->
+          <span *ngIf="editForm.get('birthDate')?.hasError('required')">{{ 'ERRORS.BIRTH_DATE_REQUIRED' | translate }}</span>
+          <span *ngIf="editForm.get('birthDate')?.hasError('minAge')">{{ 'ERRORS.BIRTH_DATE_MIN_AGE' | translate }}</span> <!-- Error for age below 18 -->
         </div>
       </div>
   
@@ -108,7 +108,7 @@
           </select>
           <!-- Error message for language -->
           <div *ngIf="editForm.get('language')?.invalid && editForm.get('language')?.touched" class="error">
-            <span *ngIf="editForm.get('language')?.hasError('required')">{{ 'LANGUAGE_REQUIRED' | translate }}</span>
+            <span *ngIf="editForm.get('language')?.hasError('required')">{{ 'ERRORS.LANGUAGE_REQUIRED' | translate }}</span>
           </div>
         </div>
   
@@ -118,10 +118,10 @@
           <input type="date" formControlName="policyStartDate">
           <!-- Error message for policy start date -->
           <div *ngIf="editForm.get('policyStartDate')?.invalid && editForm.get('policyStartDate')?.touched" class="error">
-            <span *ngIf="editForm.get('policyStartDate')?.hasError('required')">{{ 'PSD_REQUIRED' | translate }}</span>
-            <span *ngIf="editForm.get('policyStartDate')?.hasError('futureDate')">{{ 'PSD_FUTURE_DATE' | translate }}</span>
-            <span *ngIf="editForm.get('policyStartDate')?.hasError('firstOfMonth')">{{ 'PSD_FIRST_OF_MONTH' | translate }}</span>
-            <span *ngIf="editForm.get('policyStartDate')?.hasError('maxDate')">{{ 'PSD_MAX_DATE' | translate }}</span>
+            <span *ngIf="editForm.get('policyStartDate')?.hasError('required')">{{ 'ERRORS.POLICY_START_REQUIRED' | translate }}</span>
+            <span *ngIf="editForm.get('policyStartDate')?.hasError('futureDate')">{{ 'ERRORS.POLICY_START_FUTURE' | translate }}</span>
+            <span *ngIf="editForm.get('policyStartDate')?.hasError('firstOfMonth')">{{ 'ERRORS.POLICY_START_FIRST' | translate }}</span>
+            <span *ngIf="editForm.get('policyStartDate')?.hasError('maxDate')">{{ 'ERRORS.POLICY_START_MAX' | translate }}</span>
           </div>
         </div>
   
@@ -133,7 +133,7 @@
           </select>
           <!-- Error message for insurance product -->
           <div *ngIf="editForm.get('insuranceProduct')?.invalid && editForm.get('insuranceProduct')?.touched" class="error">
-            <span *ngIf="editForm.get('insuranceProduct')?.hasError('required')">{{ 'INSURANCE_PRODUCT_REQUIRED' | translate }}</span>
+            <span *ngIf="editForm.get('insuranceProduct')?.hasError('required')">{{ 'ERRORS.INSURANCE_PRODUCT_REQUIRED' | translate }}</span>
           </div>
         </div>
   
