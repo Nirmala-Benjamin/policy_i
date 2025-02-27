@@ -4,16 +4,7 @@ import { Router } from '@angular/router';
 import { FormDataService } from '../form-data.service';
 import { TranslateService } from '@ngx-translate/core';
 
-// Custom Validator to check minimum age of 18
-function ageValidator(control: any) {
-  const birthDate = new Date(control.value);
-  const today = new Date();
-  const age = today.getFullYear() - birthDate.getFullYear();
-  if (age < 18) {
-    return { minAge: true };
-  }
-  return null;
-}
+
 
 // Custom Validator for Policy Start Date (Must be first of the month, in the future, and not more than 3 months ahead)
 //function policyStartDateValidator(control: any) {
@@ -64,7 +55,7 @@ export class Step1PersonalInfoComponent {
         Validators.maxLength(255),
         Validators.email
       ]],
-      birthDate: [savedData?.birthDate || '', [Validators.required, ageValidator]],
+      birthDate: [savedData?.birthDate || '', [Validators.required, this.formDataService.ageValidator()]],
       language: [savedData?.language || 'English', [Validators.required]],
     });
   }

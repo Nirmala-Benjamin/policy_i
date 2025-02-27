@@ -56,52 +56,94 @@
   <ng-template #editDialog>
     <div class="modal">
       <h2>{{ 'EDIT_INFORMATION' | translate }}</h2>
-
+  
       <form [formGroup]="editForm" class="clsModal">
+        <!-- First Name Field -->
         <div class="clsWrap">
           <label>{{ 'FIRST_NAME' | translate }}</label>
           <input type="text" formControlName="firstName">
+          <!-- Error message for first name -->
+          <div *ngIf="editForm.get('firstName')?.invalid && editForm.get('firstName')?.touched" class="error">
+            <span *ngIf="editForm.get('firstName')?.hasError('required')">{{ 'FIRST_NAME_REQUIRED' | translate }}</span>
+          </div>
         </div>
-
+  
+        <!-- Last Name Field -->
         <div class="clsWrap">
           <label>{{ 'LAST_NAME' | translate }}</label>
           <input type="text" formControlName="lastName">
+          <!-- Error message for last name -->
+          <div *ngIf="editForm.get('lastName')?.invalid && editForm.get('lastName')?.touched" class="error">
+            <span *ngIf="editForm.get('lastName')?.hasError('required')">{{ 'LAST_NAME_REQUIRED' | translate }}</span>
+          </div>
         </div>
-
+  
+        <!-- Email Field -->
         <div class="clsWrap">
           <label>{{ 'EMAIL' | translate }}</label>
           <input type="email" formControlName="email">
+          <!-- Error message for email -->
+          <div *ngIf="editForm.get('email')?.invalid && editForm.get('email')?.touched" class="error">
+            <span *ngIf="editForm.get('email')?.hasError('required')">{{ 'EMAIL_REQUIRED' | translate }}</span>
+            <span *ngIf="editForm.get('email')?.hasError('email')">{{ 'EMAIL_INVALID' | translate }}</span>
+          </div>
         </div>
-
+  
+        <!-- Birth Date Field -->
         <div class="clsWrap">
-          <label>{{ 'BIRTH_DATE' | translate }}</label>
-          <input type="date" formControlName="birthDate">
+        <label>{{ 'BIRTH_DATE' | translate }}</label>
+        <input type="date" formControlName="birthDate">
+        <div *ngIf="editForm.get('birthDate')?.invalid && editForm.get('birthDate')?.touched" class="error">
+          <span *ngIf="editForm.get('birthDate')?.hasError('required')">{{ 'BIRTH_DATE_REQUIRED' | translate }}</span>
+          <span *ngIf="editForm.get('birthDate')?.hasError('minAge')">{{ 'AGE_MIN_18' | translate }}</span> <!-- Error for age below 18 -->
         </div>
-
+      </div>
+  
+        <!-- Language Field -->
         <div class="clsWrap">
           <label>{{ 'LANGUAGE' | translate }}</label>
           <select formControlName="language">
             <option value="English">English</option>
             <option value="Dutch">Dutch</option>
           </select>
+          <!-- Error message for language -->
+          <div *ngIf="editForm.get('language')?.invalid && editForm.get('language')?.touched" class="error">
+            <span *ngIf="editForm.get('language')?.hasError('required')">{{ 'LANGUAGE_REQUIRED' | translate }}</span>
+          </div>
         </div>
-
+  
+        <!-- Policy Start Date Field -->
         <div class="clsWrap">
           <label>{{ 'PSD' | translate }}</label>
           <input type="date" formControlName="policyStartDate">
+          <!-- Error message for policy start date -->
+          <div *ngIf="editForm.get('policyStartDate')?.invalid && editForm.get('policyStartDate')?.touched" class="error">
+            <span *ngIf="editForm.get('policyStartDate')?.hasError('required')">{{ 'PSD_REQUIRED' | translate }}</span>
+            <span *ngIf="editForm.get('policyStartDate')?.hasError('futureDate')">{{ 'PSD_FUTURE_DATE' | translate }}</span>
+            <span *ngIf="editForm.get('policyStartDate')?.hasError('firstOfMonth')">{{ 'PSD_FIRST_OF_MONTH' | translate }}</span>
+            <span *ngIf="editForm.get('policyStartDate')?.hasError('maxDate')">{{ 'PSD_MAX_DATE' | translate }}</span>
+          </div>
         </div>
-
+  
+        <!-- Insurance Product Field -->
         <div class="clsWrap">
           <label>{{ 'INSURANCE_PRODUCT' | translate }}</label>
           <select formControlName="insuranceProduct">
             <option *ngFor="let product of insuranceProducts" [value]="product">{{ product }}</option>
           </select>
+          <!-- Error message for insurance product -->
+          <div *ngIf="editForm.get('insuranceProduct')?.invalid && editForm.get('insuranceProduct')?.touched" class="error">
+            <span *ngIf="editForm.get('insuranceProduct')?.hasError('required')">{{ 'INSURANCE_PRODUCT_REQUIRED' | translate }}</span>
+          </div>
         </div>
+  
+        <!-- Save and Cancel Buttons -->
         <div class="clsWrap">
-        <button mat-button color="primary" class="clsPrev" (click)="saveChanges()" [disabled]="editForm.invalid">{{ 'SAVE' | translate }}</button>
-        <button mat-button color="warn" class="clsNxt" (click)="dialog.closeAll()">{{ 'CANCEL' | translate }}</button>
+          <button mat-button color="primary" class="clsPrev" (click)="saveChanges()" [disabled]="editForm.invalid">{{ 'SAVE' | translate }}</button>
+          <button mat-button color="warn" class="clsNxt" (click)="dialog.closeAll()">{{ 'CANCEL' | translate }}</button>
         </div>
       </form>
     </div>
   </ng-template>
+  
 </div>
