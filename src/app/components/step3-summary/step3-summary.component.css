@@ -36,6 +36,9 @@
     padding: 0;
 
   }
+  .clsSumForm input, .clsSumForm select {
+    background-color: #ededed;
+  }
   /* Responsive Design */
 @media (max-width: 600px) {
     .modal {
