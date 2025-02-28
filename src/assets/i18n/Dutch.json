@@ -32,6 +32,8 @@
     "POLICY_START_FUTURE": "Begindatum van de polis moet in de toekomst liggen.",
     "POLICY_START_FIRST": "Begindatum van de polis moet de eerste dag van de maand zijn.",
     "POLICY_START_MAX": "Begindatum van de polis mag niet meer dan 3 maanden vooruit liggen.",
-    "INSURANCE_PRODUCT_REQUIRED": "Verzekeringsproduct is verplicht."
+    "INSURANCE_PRODUCT_REQUIRED": "Verzekeringsproduct is verplicht.",
+    "FIRST_NAME_PATTERN": "De voornaam mag alleen letters bevatten.",
+      "LAST_NAME_PATTERN": "De achternaam mag alleen letters bevatten."
   }
 }
