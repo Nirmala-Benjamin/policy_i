@@ -94,9 +94,13 @@ button {
   padding: 0;
   width: auto;
 }
-.clsEdit label{
+.clsEdit h3, h3{
   float: left;
   padding-right: 20px;
+  color: #9b9b9b;
+}
+h3{
+float: none;
 }
 button:hover {
   background-color: #1565c0;

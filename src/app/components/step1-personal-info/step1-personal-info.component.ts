@@ -1,30 +1,10 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { FormDataService } from '../form-data.service';
+import { FormDataService } from '../../services/form-data.service';
 import { TranslateService } from '@ngx-translate/core';
-
-
-
-// Custom Validator for Policy Start Date (Must be first of the month, in the future, and not more than 3 months ahead)
-//function policyStartDateValidator(control: any) {
-  //const startDate = new Date(control.value);
-  //const today = new Date();
-
-  // Check if the date is the first day of the month
-  //if (startDate.getDate() !== 1) {
-    //return { notFirstOfMonth: true };
-  //}
-
-  // Check if the date is in the future and no more than 3 months ahead
-  //const maxDate = new Date();
-  //maxDate.setMonth(today.getMonth() + 3);
-  //if (startDate < today || startDate > maxDate) {
-    //return { invalidDateRange: true };
-  //}
-
-  //return null;
-//}
+import { DateAdapter } from '@angular/material/core';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-step1-personal-info',
@@ -34,12 +14,14 @@ import { TranslateService } from '@ngx-translate/core';
 export class Step1PersonalInfoComponent {
   personalInfoForm: FormGroup;
   languages = ['English', 'Dutch'];  
-
+  namePattern = "^[a-zA-Z\s'-]+$";
   constructor(
     private fb: FormBuilder, 
     private router: Router, 
     private formDataService: FormDataService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private dateAdapter: DateAdapter<Date>, 
+    private datePipe: DatePipe
   ) {
     this.translate.setDefaultLang('English');
     this.translate.use(localStorage.getItem('language') || 'English');
@@ -48,8 +30,8 @@ export class Step1PersonalInfoComponent {
     const savedData = this.formDataService.getPersonalInfo();
   
     this.personalInfoForm = this.fb.group({
-      firstName: [savedData?.firstName || '', [Validators.required, Validators.maxLength(255)]],
-      lastName: [savedData?.lastName || '', [Validators.required, Validators.maxLength(255)]],
+      firstName: [savedData?.firstName || '', [Validators.required, Validators.maxLength(255), Validators.pattern(this.namePattern)]],
+      lastName: [savedData?.lastName || '', [Validators.required, Validators.maxLength(255), Validators.pattern(this.namePattern)]],
       email: [savedData?.email || '', [
         Validators.required,
         Validators.maxLength(255),
@@ -58,6 +40,7 @@ export class Step1PersonalInfoComponent {
       birthDate: [savedData?.birthDate || '', [Validators.required, this.formDataService.ageValidator()]],
       language: [savedData?.language || 'English', [Validators.required]],
     });
+    
   }
   
   switchLanguage(event: Event) {
@@ -66,16 +49,16 @@ export class Step1PersonalInfoComponent {
   
     this.translate.use(lang);
     localStorage.setItem('language', lang);
-    this.personalInfoForm.patchValue({ language: lang }); // Update form value
-  //  this.personalInfoForm.reset({ language: lang });
+    this.personalInfoForm.patchValue({ language: lang }); // Update form value 
   }
   
   next() {
     if (this.personalInfoForm.valid) {
-     // localStorage.setItem('personalInfo', JSON.stringify(this.personalInfoForm.value));
-
-      // Store personal information in the service
-      this.formDataService.setPersonalInfo(this.personalInfoForm.value);
+     let formData = this.personalInfoForm.value;
+     // Convert birthDate to "dd/MM/yyyy" format before storing
+     formData.birthDate = this.datePipe.transform(formData.birthDate, 'dd/MM/yyyy');
+       // Store personal information in the service
+    this.formDataService.setPersonalInfo(formData);    
       this.router.navigate(['/step2']);
     }
   }

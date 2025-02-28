@@ -33,7 +33,7 @@ export class FormDataService {
     this.policyInfo = null;
   }
 
-  // ✅ Future Date Validator
+  // Future Date Validator
   futureDateValidator(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       const date = new Date(control.value);
@@ -43,7 +43,7 @@ export class FormDataService {
     };
   }
 
-  // ✅ First of the Month Validator
+  // First of the Month Validator
   firstOfMonthValidator(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       const date = new Date(control.value);
@@ -53,7 +53,7 @@ export class FormDataService {
     };
   }
 
-  // ✅ Max Date Validator (Limit to 3 Months)
+  // Max Date Validator (Limit to 3 Months)
   maxDateValidator(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       const date = new Date(control.value);
@@ -83,4 +83,6 @@ ageValidator(): ValidatorFn {
     return null; // No error
   };
 }
+
 }
+

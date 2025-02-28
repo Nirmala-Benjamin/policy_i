@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { DateAdapter } from '@angular/material/core';
 import { Router } from '@angular/router';
-import { MockApiService } from '../mock-api.service'; 
-import { FormDataService } from '../form-data.service';
+import { MockApiService } from '../../services/mock-api.service'; 
+import { FormDataService } from '../../services/form-data.service';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -49,9 +49,6 @@ export class Step2PolicyQuestionsComponent implements OnInit {
       this.translate.use(localStorage.getItem('language') || 'English');
     }
     
-  
-
-
   next() {
     if (this.policyQuestionsForm.valid) {
       
@@ -70,6 +67,5 @@ this.mockApiService.submitRequest(this.policyQuestionsForm.value).subscribe(resp
     
  this.personalInfo = this.formDataService.getPersonalInfo();
     this.router.navigate(['/step1']);
-    console.log('Navigating to the previous step');
   }
 }

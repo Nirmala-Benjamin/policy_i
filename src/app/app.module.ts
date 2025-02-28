@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { Step1PersonalInfoComponent } from './step1-personal-info/step1-personal-info.component';
-import { Step2PolicyQuestionsComponent } from './step2-policy-questions/step2-policy-questions.component';
-import { Step3SummaryComponent } from './step3-summary/step3-summary.component';
-import { Step4SubmissionComponent } from './step4-submission/step4-submission.component';
+import { Step1PersonalInfoComponent } from './components/step1-personal-info/step1-personal-info.component';
+import { Step2PolicyQuestionsComponent } from './components/step2-policy-questions/step2-policy-questions.component';
+import { Step3SummaryComponent } from './components/step3-summary/step3-summary.component';
+import { Step4SubmissionComponent } from './components/step4-submission/step4-submission.component';
 
 
 // Import Material modules
@@ -24,6 +23,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { MatDialogModule } from '@angular/material/dialog';
+import { DatePipe } from '@angular/common';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -57,7 +57,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     })
   ],
   
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
