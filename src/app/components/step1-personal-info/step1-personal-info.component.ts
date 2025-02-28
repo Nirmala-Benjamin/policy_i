@@ -11,6 +11,7 @@ import { DatePipe } from '@angular/common';
   templateUrl: './step1-personal-info.component.html',
   styleUrls: ['./step1-personal-info.component.css']
 })
+
 export class Step1PersonalInfoComponent {
   personalInfoForm: FormGroup;
   languages = ['English', 'Dutch'];  

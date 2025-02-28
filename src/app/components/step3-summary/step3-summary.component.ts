@@ -50,15 +50,30 @@ export class Step3SummaryComponent {
   }
 
   openEditModal(dialogTemplate: any) {
-    //this.dialog.open(dialogTemplate);
-  let birthDateFormatted = this.datePipe.transform(this.personalInfo.birthDate, 'dd/MM/yyyy');
-  this.editForm.patchValue({
-    birthDate: birthDateFormatted
-  });
-
-  this.dialog.open(dialogTemplate);
+    let birthDateFormatted;
+    
+    if (this.personalInfo.birthDate) {
+      // Convert the stored string (dd/MM/yyyy) back to a Date object
+      let parts = this.personalInfo.birthDate.split('/');
+      
+      if (parts.length === 3) {
+        const day = parseInt(parts[0], 10);
+        const month = parseInt(parts[1], 10) - 1; // Month is zero-based in JS
+        const year = parseInt(parts[2], 10);
+        
+        const birthDateObj = new Date(year, month, day);
+        birthDateFormatted = this.datePipe.transform(birthDateObj, 'dd/MM/yyyy');
+      }
+    }
+  
+    this.editForm.patchValue({
+      birthDate: birthDateFormatted || this.personalInfo.birthDate
+    });
+  
+    this.dialog.open(dialogTemplate);
   }
 
+  
   saveChanges() {
     if (this.editForm.valid) {
       const updatedData = this.editForm.value;
