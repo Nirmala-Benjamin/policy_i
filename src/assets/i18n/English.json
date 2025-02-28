@@ -32,9 +32,9 @@
       "POLICY_START_FUTURE": "Policy start date must be in the future.",
       "POLICY_START_FIRST": "Policy start date must be the first of the month.",
       "POLICY_START_MAX": "Policy start date cannot be more than 3 months ahead.",
-      "INSURANCE_PRODUCT_REQUIRED": "Insurance product is required."
-  }
+      "INSURANCE_PRODUCT_REQUIRED": "Insurance product is required.",
+      "FIRST_NAME_PATTERN": "First name must contain only letters.",
+      "LAST_NAME_PATTERN": "Last name must contain only letters."
 
- 
-  
+  }  
 }

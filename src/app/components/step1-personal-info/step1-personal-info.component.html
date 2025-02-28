@@ -5,6 +5,7 @@
     <input type="text" id="firstName" formControlName="firstName" />
     <div class="error" *ngIf="personalInfoForm.get('firstName')?.invalid && personalInfoForm.get('firstName')?.touched">
         <span *ngIf="personalInfoForm.get('firstName')?.hasError('required')">{{ 'ERRORS.FIRST_NAME_REQUIRED' | translate }}</span>
+        <span *ngIf="personalInfoForm.get('firstName')?.hasError('pattern')">{{ 'ERRORS.FIRST_NAME_PATTERN' | translate }}</span>
         <span *ngIf="personalInfoForm.get('firstName')?.hasError('maxlength')">{{ 'ERRORS.FIRST_NAME_MAX' | translate }}</span>
     </div>
   </div>
@@ -14,6 +15,8 @@
     <div class="error" *ngIf="personalInfoForm.get('lastName')?.invalid && personalInfoForm.get('lastName')?.touched">
         <span *ngIf="personalInfoForm.get('lastName')?.hasError('required')">{{ 'ERRORS.LAST_NAME_REQUIRED' | translate }}</span>
         <span *ngIf="personalInfoForm.get('lastName')?.hasError('maxlength')">{{ 'ERRORS.LAST_NAME_MAX' | translate }}</span>
+        <span *ngIf="personalInfoForm.get('lastName')?.hasError('pattern')">{{ 'ERRORS.LAST_NAME_PATTERN' | translate }}</span>
+
     </div>
   </div>
   <div class="clsWrap">
